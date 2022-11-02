@@ -29,9 +29,9 @@ body{
     margin-left: 170px;
 }
 
-.login-lable{
+.login-label{
     color: white;
-    font-size: 11px;
+    font-size: 13px;
 }
 
 .login-controls{
@@ -57,4 +57,94 @@ body{
 }
 .sub-btn:hover{
     background: #29487d;
+}
+
+.left-section{
+    width: 40%;
+    float:left;
+    padding-left: 170px;
+    padding-top: 60px;
+}
+
+.right-section{
+    width: 50%;
+    height: 100px;
+    float: left;
+}
+
+.main-body{
+    background: linear-gradient(white, #D3D8E8);
+    width: 100%;
+    height: 870px;
+}
+
+.image{
+    width: 580px;
+}
+
+.paragraph{
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.heading{
+    margin-left: 110px;
+    font-size: 38px;
+    margin-bottom: -7px;
+}
+
+.sub-heading{
+    margin-left: 115px;
+    font-size: 20px;
+}
+.input-items{
+    margin-left: 115px;
+    float: left;
+    
+}
+.input1{
+    height: 30px;
+    width: 200px;
+}
+.input2{
+    margin-left: 6px;
+    height: 30px;
+    width: 200px;
+}
+
+.input3{
+    height: 30px;
+    width: 420px;
+    margin-top: 12px;
+    margin-left: 0px;
+}
+.input4{
+    height: 30px;
+    width: 420px;
+    margin-top: 12px;
+    margin-left: 0px;
+    margin-bottom: 20px;
+}
+.birthday-label{
+    margin-left: 115px;
+    font-weight: bold;
+    color: rgb(173, 166, 166);
+
+}
+.dropbox{
+    margin-left: 115px;
+    margin-top: 12px;
+    border-color: gray;
+}
+.date{
+    height: 25px;
+    width: 60px;
+}
+.month{
+    height: 25px;
+    width: 100px;
+}
+.year{
+    height: 25px;
+    width: 100px;
 }
