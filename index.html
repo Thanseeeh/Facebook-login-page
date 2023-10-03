@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construction-Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- LOADING -->
+    <div id="loading" class="fixed inset-0 flex items-center justify-center bg-gray-800 opacity-100 transition-opacity duration-300 z-50">
+        <div class="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-300"></div>
+    </div>
+
+    <div style="background-image: url('images/home_background.jpg'); background-size: cover; background-position: center; height: 100vh;">
+        
+        <!-- HEADER -->
+        <header class="bg-black text-white p-4 flex items-center justify-between fixed top-0 left-0 right-0 z-50">
+            <nav class="container mx-auto flex items-center justify-between">
+                <div class="md:flex md:items-center">
+                    <div class="mr-4">
+                        <img src="data:image/png;base64,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" class="h-8 w-8 hidden md:block">
+                    </div>
+                    <a href="" class="transition ease-in delay-150 text-2xl font-bold hover:text-yellow-500">Construction</a>
+                </div>
+                <div class="md:hidden relative">
+                    <button id="mobileMenuButton" class="transition ease-in delay-150 text-white hover:text-yellow-500">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div id="mobileMenu" class="hidden md:block flex space-x-4">
+                    <a href="#home" class="transition ease-in delay-150 hover:text-yellow-500 font-bold">Home</a>
+                    <a href="#Services" class="transition ease-in delay-150 hover:text-yellow-500 font-bold">Services</a>
+                    <a href="#About" class="transition ease-in delay-150 hover:text-yellow-500 font-bold">About</a>
+                    <a href="#Projects" class="transition ease-in delay-150 hover:text-yellow-500 font-bold">Projects</a>
+                    <a href="#Contact" class="hidden md:inline-block text-black bg-yellow-500 hover:bg-yellow-800 focus:ring-4 focus:ring-yellow-600 font-bold rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 ">Contact</a>
+                </div>
+            </nav>
+        </header>
+    
+        <!-- INTRO SLIDE -->
+        <div class="flex flex-col justify-center h-screen bg-black bg-opacity-50" id="home">
+            <h1 class="text-4xl md:text-8xl font-extrabold text-yellow-500 ml-20 md:ml-60">ABC Solution</h1>
+            <h1 class="text-4xl md:text-8xl font-extrabold ml-40 md:ml-96">
+                <span class="bg-gradient-to-r from-yellow-500 to-red-500 text-transparent bg-clip-text">Constructions</span>
+            </h1>            
+        </div>        
+    </div>
+
+    <!-- OWNER SLIDE -->
+    <div class="pt-40">
+        <h1 class="text-2xl md:text-5xl font-extrabold ml-5 md:ml-80">OWNER DETAILS</h1>
+
+        <div class="container md:ml-72 px-6 text-gray-600 md:px-12 xl:px-6">
+            <div class="space-y-6 md:space-y-0 md:flex md:gap-6 lg:items-center lg:gap-12">
+                <div class="md:7/12 lg:w-6/12">
+                    <p class="mt-6 text-gray-700">I am John Smith, the owner of this Company. You can contact me at <a href="mailto:john.smith@example.com" class="font-semibold">john.smith@example.com</a> or by phone at <a href="tel:+1 (555) 123-4567" class="font-semibold">+1 (555) 123-4567</a>. My business, Smith Enterprises LLC, is registered under the number 12345-67890, with the registered office address at 123 Main Street, Anytown, USA. For your privacy, please review our Privacy Policy and our Terms of Service. All content on this website is protected by copyright, and you may not reproduce it without permission. Please note that the information provided on this website is for general informational purposes only and should not be considered professional advice. The website operates under the jurisdiction of the State of California, USA. Additionally, this website may participate in affiliate marketing programs, and we may receive compensation for product recommendations made through affiliate links. Connect with me on <a href="" class="font-semibold">Twitter</a> , and <a href="" class="font-semibold">LinkedIn</a> for updates and further interaction.</p>
+                </div>
+                <div class="md:5/12 lg:w-5/12">
+                    <img src="images/owner.jpg" class="rounded-lg shadow-lg" alt="image" loading="lazy" width="" height="">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- SERVICES SLIDE -->
+    <div class="py-28" id="Services">
+        <h1 class="text-2xl md:text-5xl font-extrabold ml-5 md:ml-80">OUR SERVICES</h1>
+
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 mb-12">
+            <article>
+                <section class="mt-6 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-x-6 gap-y-8">
+                    <article class="relative w-full h-64 bg-cover bg-center group rounded-lg overflow-hidden shadow-lg hover:shadow-2xl  transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
+                        style="background-image: url('images/service1.jpg');">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 group-hover:opacity-75 transition duration-300 ease-in-out"></div>
+                        <div class="relative w-full h-full px-4 sm:px-6 lg:px-4 flex justify-center items-center">
+                            <h3 class="text-center">
+                                <h1 class="transition ease-in delay-150 hover:text-yellow-500 font-bold text-2xl text-white">
+                                    <span class="absolute inset-0"></span>
+                                    Design-Build Services
+                                </h1>
+                            </h3>
+                        </div>
+                    </article>
+                    <article class="relative w-full h-64 bg-cover bg-center group rounded-lg overflow-hidden shadow-lg hover:shadow-2xl  transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
+                        style="background-image: url('images/service2.jpg');">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 group-hover:opacity-75 transition duration-300 ease-in-out"></div>
+                        <div class="relative w-full h-full px-4 sm:px-6 lg:px-4 flex justify-center items-center">
+                            <h3 class="text-center">
+                                <h1 class="transition ease-in delay-150 hover:text-yellow-500 font-bold text-2xl text-white">
+                                    <span class="absolute inset-0"></span>
+                                    Renovation and Remodeling
+                                </h1>
+                            </h3>
+                        </div>
+                    </article>
+                    <article class="relative w-full h-64 bg-cover bg-center group rounded-lg overflow-hidden shadow-lg hover:shadow-2xl  transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
+                        style="background-image: url('images/service3.jpg');">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 group-hover:opacity-75 transition duration-300 ease-in-out"></div>
+                        <div class="relative w-full h-full px-4 sm:px-6 lg:px-4 flex justify-center items-center">
+                            <h3 class="text-center">
+                                <h1 class="transition ease-in delay-150 hover:text-yellow-500 font-bold text-2xl text-white">
+                                    <span class="absolute inset-0"></span>
+                                    Foundation Work
+                                </h1>
+                            </h3>
+                        </div>
+                    </article>
+                </section>
+                <section class="mt-6 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-x-6 gap-y-8">
+                    <article class="relative w-full h-64 bg-cover bg-center group rounded-lg overflow-hidden shadow-lg hover:shadow-2xl  transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
+                        style="background-image: url('images/service4.jpg');">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 group-hover:opacity-75 transition duration-300 ease-in-out"></div>
+                        <div class="relative w-full h-full px-4 sm:px-6 lg:px-4 flex justify-center items-center">
+                            <h3 class="text-center">
+                                <h1 class="transition ease-in delay-150 hover:text-yellow-500 font-bold text-2xl text-white">
+                                    <span class="absolute inset-0"></span>
+                                    Landscaping and Site Work
+                                </h1>
+                            </h3>
+                        </div>
+                    </article>
+                    <article class="relative w-full h-64 bg-cover bg-center group rounded-lg overflow-hidden shadow-lg hover:shadow-2xl  transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
+                        style="background-image: url('images/service5.jpg');">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 group-hover:opacity-75 transition duration-300 ease-in-out"></div>
+                        <div class="relative w-full h-full px-4 sm:px-6 lg:px-4 flex justify-center items-center">
+                            <h3 class="text-center">
+                                <h1 class="transition ease-in delay-150 hover:text-yellow-500 font-bold text-2xl text-white">
+                                    <span class="absolute inset-0"></span>
+                                    Production and Construction
+                                </h1>
+                            </h3>
+                        </div>
+                    </article>
+                    <article class="relative w-full h-64 bg-cover bg-center group rounded-lg overflow-hidden shadow-lg hover:shadow-2xl  transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
+                        style="background-image: url('images/service6.jpg');">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 group-hover:opacity-75 transition duration-300 ease-in-out"></div>
+                        <div class="relative w-full h-full px-4 sm:px-6 lg:px-4 flex justify-center items-center">
+                            <h3 class="text-center">
+                                <h1 class="transition ease-in delay-150 hover:text-yellow-500 font-bold text-2xl text-white">
+                                    <span class="absolute inset-0"></span>
+                                    Production and Construction
+                                </h1>
+                            </h3>
+                        </div>
+                    </article>
+                </section>
+            </article>
+        </section>
+    </div>
+
+    <!-- ABOUT SLIDE -->
+    <div id="About">
+        <h1 class="text-2xl md:text-5xl font-extrabold ml-5 md:ml-80">ABOUT US</h1>
+        <div class="container md:ml-72 px-6 text-gray-600 md:px-12 xl:px-6">
+            <div class="space-y-6 md:space-y-0 md:flex md:gap-6 lg:items-center lg:gap-12">
+            <div class="md:5/12 lg:w-5/12">
+                <img src="https://tailus.io/sources/blocks/left-image/preview/images/startup.png" alt="image" loading="lazy" width="" height="">
+            </div>
+            <div class="md:7/12 lg:w-6/12">
+                <h2 class="text-2xl text-black font-bold md:text-4xl">Our Commitment to Excellence</h2>
+                <p class="mt-6 text-gray-600">At our company, excellence isn't just a goal; it's our guiding principle. With every brick we lay, every structure we build, and every project we undertake, our unwavering commitment to excellence shines through. We don't just construct buildings; we craft legacies, and we do it with the utmost dedication to quality, precision, and innovation. Our passion for construction drives us to deliver results that stand the test of time, ensuring that your vision becomes a reality that surpasses expectations. When you choose our company, you choose excellence at every step of the journey.</p>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROJECTS SLIDE -->
+    <div class="py-40" id="Projects">
+        <h1 class="text-2xl md:text-5xl font-extrabold ml-5 md:ml-80">OUR PROJECTS</h1>
+
+        <div class="container my-6 ml-5 md:ml-80 max-w-7xl">
+            <div class="flex flex-wrap">
+                <div class="w-full md:w-1/2 xl:w-1/3 px-4">
+                    <div class="bg-gray-200 rounded-lg overflow-hidden mb-10 hover:bg-black text-gray-600 hover:text-white transition ease-in delay-150">
+                        <img
+                            src="images//project1.jpg"
+                            alt="image"
+                            class="w-full h-96"
+                            />
+                        <div class="p-8 sm:p-9 md:p-7 xl:p-9 text-center">
+                            <h3 class="font-bold text-2xl mb-4 block">Street House, Mumbai</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 xl:w-1/3 px-4">
+                    <div class="bg-gray-200 rounded-lg overflow-hidden mb-10 hover:bg-black text-gray-600 hover:text-white transition ease-in delay-150">
+                        <img
+                            src="images//project2.jpg"
+                            alt="image"
+                            class="w-full h-96"
+                            />
+                        <div class="p-8 sm:p-9 md:p-7 xl:p-9 text-center">
+                            <h3 class="font-bold text-2xl mb-4 block">Three Star Hotel, Pune</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 xl:w-1/3 px-4">
+                    <div class="bg-gray-200 rounded-lg overflow-hidden mb-10 hover:bg-black text-gray-600 hover:text-white transition ease-in delay-150">
+                        <img
+                            src="images//project3.jpg"
+                            alt="image"
+                            class="w-full h-96"
+                            />
+                        <div class="p-8 sm:p-9 md:p-7 xl:p-9 text-center">
+                            <h3 class="font-bold text-2xl mb-4 block">Shopping Complex, Kochi</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 xl:w-1/3 px-4">
+                    <div class="bg-gray-200 rounded-lg overflow-hidden mb-10 hover:bg-black text-gray-600 hover:text-white transition ease-in delay-150">
+                        <img
+                            src="images//project4.jpg"
+                            alt="image"
+                            class="w-full h-96"
+                            />
+                        <div class="p-8 sm:p-9 md:p-7 xl:p-9 text-center">
+                            <h3 class="font-bold text-2xl mb-4 block">IT solution, Bangalore</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 xl:w-1/3 px-4">
+                    <div class="bg-gray-200 rounded-lg overflow-hidden mb-10 hover:bg-black text-gray-600 hover:text-white transition ease-in delay-150">
+                        <img
+                            src="images//project5.jpg"
+                            alt="image"
+                            class="w-full h-96"
+                            />
+                        <div class="p-8 sm:p-9 md:p-7 xl:p-9 text-center">
+                            <h3 class="font-bold text-2xl mb-4 block">Public Business, Mumbai</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 xl:w-1/3 px-4">
+                    <div class="bg-gray-200 rounded-lg overflow-hidden mb-10 hover:bg-black text-gray-600 hover:text-white transition ease-in delay-150">
+                        <img
+                            src="images//project6.jpg"
+                            alt="image"
+                            class="w-full h-96"
+                            />
+                        <div class="p-8 sm:p-9 md:p-7 xl:p-9 text-center">
+                            <h3 class="font-bold text-2xl mb-4 block">MNC Company, Delhi</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+    <script>
+        //TIMER SCRIPT
+        setTimeout(function () {
+            document.getElementById('loading').style.opacity = '0';
+            setTimeout(function () {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('content').style.display = 'block';
+            }, 300);
+        }, 3000);
+
+        
+        //TOGGLE SCRIPT
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+
+        //TESTIMONIAL SCRIPT
+        const testimonials = document.querySelectorAll('.testimonial-slide');
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            testimonials.forEach((slide, i) => {
+                if (i === index) {
+                    slide.style.display = 'inline-block';
+                } else {
+                    slide.style.display = 'none';
+                }
+            });
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide);
+            currentSlide = (currentSlide + 1) % testimonials.length;
+        }
+
+        showSlide(currentSlide);
+        setInterval(nextSlide, 5000);
+
+    </script>
+</body>
+</html>
